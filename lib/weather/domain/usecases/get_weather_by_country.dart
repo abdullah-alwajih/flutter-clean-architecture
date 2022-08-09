@@ -1,8 +1,8 @@
 import '../entities/weather.dart';
-import '../repository/weather_repository.dart';
+import '../repository/base_weather_repository.dart';
 
 class GetWeatherByCountryName {
-  final WeatherRepository repository;
+  final BaseWeatherRepository repository;
 
   GetWeatherByCountryName(this.repository);
 
