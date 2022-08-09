@@ -1,8 +1,6 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
-import 'package:flutter_clean_architecture/core/helpers/constants.dart';
 
+import '../../../core/helpers/constants.dart';
 import '../models/weather.dart';
 
 abstract class BaseRemoteDataSource {
@@ -15,7 +13,7 @@ class RemoteDataSource implements BaseRemoteDataSource {
     try {
       var response = await Dio().get(
           '${AppConstants.baseUrl}/weather?q=$cityName&appid=${AppConstants.apiKey}');
-      return WeatherModel.fromMap(json.decode(response.data));
+      return WeatherModel.fromMap(response.data);
     } catch (_) {
       rethrow;
     }
