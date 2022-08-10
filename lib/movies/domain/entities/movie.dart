@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Movie extends Equatable {
+ class Movie extends Equatable {
   final int id;
   final String title;
   final String backdropPath;
