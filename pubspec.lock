@@ -50,13 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.5"
-  dio:
+  equatable:
     dependency: "direct main"
     description:
-      name: dio
+      name: equatable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.6"
+    version: "2.0.3"
   fake_async:
     dependency: transitive
     description:
@@ -81,13 +81,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  http_parser:
-    dependency: transitive
-    description:
-      name: http_parser
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "4.0.1"
   lints:
     dependency: transitive
     description:
@@ -170,13 +163,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.9"
-  typed_data:
-    dependency: transitive
-    description:
-      name: typed_data
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.3.1"
   vector_math:
     dependency: transitive
     description:
