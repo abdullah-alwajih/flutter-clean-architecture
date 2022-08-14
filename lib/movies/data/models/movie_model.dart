@@ -17,10 +17,8 @@ class MovieModel extends Movie {
         backdropPath: map['backdrop_path'],
         genreIds: List<int>.from(map['genre_ids']).map((e) => e).toList(),
         overview: map['overview'],
-
-        /// TODO : CHECK THIS
-        voteAverage: map['vote_average'],
-        releaseDate: map[' release_date'],
+        voteAverage: map['vote_average'].toDouble(),
+        releaseDate: map['release_date'],
       );
 
   Map<String, dynamic> toMap() => {};
