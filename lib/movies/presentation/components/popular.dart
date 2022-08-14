@@ -21,7 +21,7 @@ class PopularComponent extends StatelessWidget {
         switch (state.popularState) {
           case RequestState.loading:
             return const SizedBox(
-                height: 400.0, child: Center(child: SingleChildScrollView()));
+                height: 400.0, child: Center(child: CircularProgressIndicator()));
           case RequestState.loaded:
             return FadeIn(
               duration: const Duration(milliseconds: 500),
