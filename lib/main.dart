@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     );
   }
 
-  ThemeData get buildThemeData => ThemeData(
-        primarySwatch: Colors.blue,
-      );
+  ThemeData get buildThemeData => ThemeData.dark().copyWith(
+    scaffoldBackgroundColor: Colors.grey.shade900,
+  );
 }

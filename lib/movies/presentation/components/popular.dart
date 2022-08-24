@@ -8,6 +8,7 @@ import '../../../core/network/api_constants.dart';
 import '../../../core/utils/enums.dart';
 import '../controllers/movies_bloc.dart';
 import '../controllers/movies_state.dart';
+import '../screens/movie_detail_screen.dart';
 
 class PopularComponent extends StatelessWidget {
   const PopularComponent({Key? key}) : super(key: key);
@@ -21,7 +22,8 @@ class PopularComponent extends StatelessWidget {
         switch (state.popularState) {
           case RequestState.loading:
             return const SizedBox(
-                height: 400.0, child: Center(child: CircularProgressIndicator()));
+                height: 400.0,
+                child: Center(child: CircularProgressIndicator()));
           case RequestState.loaded:
             return FadeIn(
               duration: const Duration(milliseconds: 500),
@@ -37,9 +39,12 @@ class PopularComponent extends StatelessWidget {
                     return Container(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(
-                        onTap: () {
-                          /// TODO : NAVIGATE TO  MOVIE DETAILS
-                        },
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  MovieDetailScreen(id: movie.id)),
+                        ),
                         child: ClipRRect(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(8.0)),
