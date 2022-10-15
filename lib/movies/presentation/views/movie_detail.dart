@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../core/helpers/app_helpers.dart';
 import '../../../core/helpers/enums.dart';
@@ -33,7 +33,6 @@ class MovieDetailScreen extends StatelessWidget {
                     child: Center(child: CircularProgressIndicator()));
               case RequestState.loaded:
                 return CustomScrollView(
-                  key: const Key('movieDetailScrollView'),
                   slivers: [
                     SliverAppBar(
                       pinned: true,
@@ -77,12 +76,13 @@ class MovieDetailScreen extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(state.movieDetails!.title,
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 23,
-                                    fontWeight: FontWeight.w700,
-                                    letterSpacing: 1.2,
-                                  )),
+                              Text(
+                                state.movieDetails!.title,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline5
+                                    ?.copyWith(fontWeight: FontWeight.w700),
+                              ),
                               const SizedBox(height: 8.0),
                               Row(
                                 children: [
@@ -98,10 +98,8 @@ class MovieDetailScreen extends StatelessWidget {
                                     child: Text(
                                       state.movieDetails!.releaseDate
                                           .split('-')[0],
-                                      style: const TextStyle(
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
+                                      style:
+                                          Theme.of(context).textTheme.subtitle1,
                                     ),
                                   ),
                                   const SizedBox(width: 16.0),
@@ -116,20 +114,16 @@ class MovieDetailScreen extends StatelessWidget {
                                       Text(
                                         (state.movieDetails!.voteAverage / 2)
                                             .toStringAsFixed(1),
-                                        style: const TextStyle(
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.w500,
-                                          letterSpacing: 1.2,
-                                        ),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .subtitle1,
                                       ),
                                       const SizedBox(width: 4.0),
                                       Text(
                                         '(${state.movieDetails!.voteAverage})',
-                                        style: const TextStyle(
-                                          fontSize: 1.0,
-                                          fontWeight: FontWeight.w500,
-                                          letterSpacing: 1.2,
-                                        ),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .subtitle1,
                                       ),
                                     ],
                                   ),
@@ -137,33 +131,20 @@ class MovieDetailScreen extends StatelessWidget {
                                   Text(
                                     AppHelpers.showDuration(
                                         state.movieDetails!.runTime),
-                                    style: const TextStyle(
-                                      color: Colors.white70,
-                                      fontSize: 16.0,
-                                      fontWeight: FontWeight.w500,
-                                      letterSpacing: 1.2,
-                                    ),
+                                    style:
+                                        Theme.of(context).textTheme.subtitle1,
                                   ),
                                 ],
                               ),
                               const SizedBox(height: 20.0),
                               Text(
                                 state.movieDetails!.overview,
-                                style: const TextStyle(
-                                  fontSize: 14.0,
-                                  fontWeight: FontWeight.w400,
-                                  letterSpacing: 1.2,
-                                ),
+                                style: Theme.of(context).textTheme.subtitle2,
                               ),
                               const SizedBox(height: 8.0),
                               Text(
-                                'Genres: ${AppHelpers.showGenres(state.movieDetails!.genres)}',
-                                style: const TextStyle(
-                                  color: Colors.white70,
-                                  fontSize: 12.0,
-                                  fontWeight: FontWeight.w500,
-                                  letterSpacing: 1.2,
-                                ),
+                                '${AppLocalizations.of(context)!.genres}: ${AppHelpers.showGenres(state.movieDetails!.genres)}',
+                                style: Theme.of(context).textTheme.caption,
                               ),
                             ],
                           ),
@@ -178,12 +159,8 @@ class MovieDetailScreen extends StatelessWidget {
                           from: 20,
                           duration: const Duration(milliseconds: 500),
                           child: Text(
-                            'More like this'.toUpperCase(),
-                            style: const TextStyle(
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w500,
-                              letterSpacing: 1.2,
-                            ),
+                            AppLocalizations.of(context)!.moreLikeThis.toUpperCase(),
+                            style: Theme.of(context).textTheme.subtitle1,
                           ),
                         ),
                       ),

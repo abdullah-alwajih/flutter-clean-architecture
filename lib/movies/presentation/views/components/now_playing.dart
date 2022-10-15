@@ -1,7 +1,4 @@
-
-
 part of '../movies.dart';
-
 
 class NowPlayingComponent extends StatelessWidget {
   const NowPlayingComponent({Key? key}) : super(key: key);
@@ -24,12 +21,10 @@ class NowPlayingComponent extends StatelessWidget {
                 options: CarouselOptions(
                   height: 400.0,
                   viewportFraction: 1.0,
-                  onPageChanged: (index, reason) {},
                 ),
                 items: state.nowPlayingMovies.map(
                   (item) {
                     return GestureDetector(
-                      key: const Key('openMovieMinimalDetail'),
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -78,10 +73,13 @@ class NowPlayingComponent extends StatelessWidget {
                                       ),
                                       const SizedBox(width: 4.0),
                                       Text(
-                                        'Now Playing'.toUpperCase(),
-                                        style: const TextStyle(
-                                          fontSize: 16.0,
-                                        ),
+                                        AppLocalizations.of(context)!
+                                            .nowPlaying
+                                            .toUpperCase(),
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .subtitle1
+                                            ?.copyWith(letterSpacing: 0),
                                       ),
                                     ],
                                   ),
@@ -91,9 +89,8 @@ class NowPlayingComponent extends StatelessWidget {
                                   child: Text(
                                     item.title,
                                     textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                      fontSize: 24,
-                                    ),
+                                    style:
+                                        Theme.of(context).textTheme.headline5,
                                   ),
                                 ),
                               ],
