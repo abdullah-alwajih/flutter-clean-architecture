@@ -1,25 +1,24 @@
+
 part of '../movie_detail.dart';
 
-Widget showRecommendations() {
-  return GetX<MovieDetailsController>(
-    init: Get.find<MovieDetailsController>(),
-    builder: (controller) {
+Widget _showRecommendations() {
+  return BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
+    builder: (context, state) {
       return SliverGrid(
         delegate: SliverChildBuilderDelegate(
-          (context, index) {
-            final recommendation =
-                controller.recommendationsMovies.value.recommendations[index];
+              (context, index) {
+            final recommendation = state.recommendations[index];
             return FadeInUp(
               from: 20,
               duration: const Duration(milliseconds: 500),
               child: ClipRRect(
-                  borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+                borderRadius: const BorderRadius.all(Radius.circular(4.0)),
                   child: cachedNetworkImage(recommendation.backdropPath,
                       height: 170.0, width: 120.0)),
+
             );
           },
-          childCount:
-              controller.recommendationsMovies.value.recommendations.length,
+          childCount: state.recommendations.length,
         ),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           mainAxisSpacing: 8.0,

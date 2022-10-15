@@ -1,14 +1,18 @@
+
+
 part of '../movies.dart';
+
 
 class PopularComponent extends StatelessWidget {
   const PopularComponent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetX<MoviesController>(
-      init: Get.find<MoviesController>(),
-      builder: (controller) {
-        switch (controller.popular.value.popularState) {
+    return BlocBuilder<MoviesBloc, MoviesState>(
+      buildWhen: (previous, current) =>
+          previous.popularState != current.popularState,
+      builder: (context, state) {
+        switch (state.popularState) {
           case RequestState.loading:
             return const SizedBox(
                 height: 400.0,
@@ -22,15 +26,18 @@ class PopularComponent extends StatelessWidget {
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  itemCount: controller.popular.value.popularMovies.length,
+                  itemCount: state.popularMovies.length,
                   itemBuilder: (context, index) {
-                    final movie = controller.popular.value.popularMovies[index];
+                    final movie = state.popularMovies[index];
                     return Container(
                       padding: const EdgeInsets.only(right: 8.0),
                       child: InkWell(
-                        onTap: () => Navigator.pushNamed(
-                            context, AppRoutes.moviesDetails,
-                            arguments: movie.id),
+                        onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  MovieDetailScreen(id: movie.id)),
+                        ),
                         child: ClipRRect(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(8.0)),
@@ -48,8 +55,7 @@ class PopularComponent extends StatelessWidget {
           case RequestState.error:
             return SizedBox(
                 height: 400.0,
-                child: Center(
-                    child: Text(controller.popular.value.popularMessage)));
+                child: Center(child: Text(state.nowPlayingMessage)));
         }
       },
     );

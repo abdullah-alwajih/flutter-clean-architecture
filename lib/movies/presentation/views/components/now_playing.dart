@@ -1,14 +1,18 @@
+
+
 part of '../movies.dart';
+
 
 class NowPlayingComponent extends StatelessWidget {
   const NowPlayingComponent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetX<MoviesController>(
-      init: Get.find<MoviesController>(),
-      builder: (controller) {
-        switch (controller.nowPlaying.value.nowPlayingState) {
+    return BlocBuilder<MoviesBloc, MoviesState>(
+      buildWhen: (previous, current) =>
+          previous.nowPlayingState != current.nowPlayingState,
+      builder: (context, state) {
+        switch (state.nowPlayingState) {
           case RequestState.loading:
             return const SizedBox(
                 height: 400.0,
@@ -22,13 +26,16 @@ class NowPlayingComponent extends StatelessWidget {
                   viewportFraction: 1.0,
                   onPageChanged: (index, reason) {},
                 ),
-                items: controller.nowPlaying.value.nowPlayingMovies.map(
+                items: state.nowPlayingMovies.map(
                   (item) {
                     return GestureDetector(
                       key: const Key('openMovieMinimalDetail'),
-                      onTap: () => Navigator.pushNamed(
-                          context, AppRoutes.moviesDetails,
-                          arguments: item.id),
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                MovieDetailScreen(id: item.id)),
+                      ),
                       child: Stack(
                         children: [
                           ShaderMask(
@@ -102,9 +109,7 @@ class NowPlayingComponent extends StatelessWidget {
           case RequestState.error:
             return SizedBox(
                 height: 400.0,
-                child: Center(
-                    child:
-                        Text(controller.nowPlaying.value.nowPlayingMessage)));
+                child: Center(child: Text(state.nowPlayingMessage)));
         }
       },
     );
