@@ -1,13 +1,23 @@
+import 'package:animate_do/animate_do.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../../core/helpers/enums.dart';
+import '../../../../core/network/api_constants.dart';
 import '../../../core/services/services_locator.dart';
-import '../components/now_playing.dart';
-import '../components/popular.dart';
-import '../components/top_rated.dart';
+import '../../../core/utils/network_image.dart';
 import '../controllers/movies_bloc.dart';
 import '../controllers/movies_event.dart';
+import '../controllers/movies_state.dart';
+import 'movie_detail.dart';
+
+part 'components/now_playing.dart';
+
+part 'components/popular.dart';
+
+part 'components/top_rated.dart';
 
 class MoviesScreen extends StatelessWidget {
   const MoviesScreen({Key? key}) : super(key: key);

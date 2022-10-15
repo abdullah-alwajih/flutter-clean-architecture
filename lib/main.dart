@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'core/services/services_locator.dart';
-import 'movies/presentation/screens/movies_screen.dart';
+import 'movies/presentation/views/movies.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

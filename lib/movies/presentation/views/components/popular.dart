@@ -1,14 +1,7 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shimmer/shimmer.dart';
 
-import '../../../core/network/api_constants.dart';
-import '../../../core/utils/enums.dart';
-import '../controllers/movies_bloc.dart';
-import '../controllers/movies_state.dart';
-import '../screens/movie_detail_screen.dart';
+
+part of '../movies.dart';
+
 
 class PopularComponent extends StatelessWidget {
   const PopularComponent({Key? key}) : super(key: key);
@@ -48,24 +41,9 @@ class PopularComponent extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(8.0)),
-                          child: CachedNetworkImage(
+                          child: cachedNetworkImage(
+                            ApiConstants.imageUrl(movie.backdropPath),
                             width: 120.0,
-                            fit: BoxFit.cover,
-                            imageUrl: ApiConstants.imageUrl(movie.backdropPath),
-                            placeholder: (context, url) => Shimmer.fromColors(
-                              baseColor: Colors.grey[850]!,
-                              highlightColor: Colors.grey[800]!,
-                              child: Container(
-                                height: 170.0,
-                                width: 120.0,
-                                decoration: BoxDecoration(
-                                  color: Colors.black,
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                              ),
-                            ),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
                           ),
                         ),
                       ),

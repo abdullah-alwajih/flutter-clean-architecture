@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_clean_architecture/movies/domain/entities/recommendation.dart';
-import 'package:flutter_clean_architecture/movies/domain/usecases/get_movie_details_usecase.dart';
-import 'package:flutter_clean_architecture/movies/domain/usecases/get_recommendation_usecase.dart';
 
-import '../../../core/utils/enums.dart';
+import '../../../core/helpers/enums.dart';
 import '../../domain/entities/movie_details.dart';
+import '../../domain/entities/recommendation.dart';
+import '../../domain/usecases/get_movie_details_usecase.dart';
+import '../../domain/usecases/get_recommendation_usecase.dart';
 
 part 'movie_details_event.dart';
 

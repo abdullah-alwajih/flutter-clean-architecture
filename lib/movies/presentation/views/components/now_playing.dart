@@ -1,14 +1,7 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/network/api_constants.dart';
-import '../../../core/utils/enums.dart';
-import '../controllers/movies_bloc.dart';
-import '../controllers/movies_state.dart';
-import '../screens/movie_detail_screen.dart';
+
+part of '../movies.dart';
+
 
 class NowPlayingComponent extends StatelessWidget {
   const NowPlayingComponent({Key? key}) : super(key: key);
@@ -63,11 +56,9 @@ class NowPlayingComponent extends StatelessWidget {
                               );
                             },
                             blendMode: BlendMode.dstIn,
-                            child: CachedNetworkImage(
+                            child: cachedNetworkImage(
+                              ApiConstants.imageUrl(item.backdropPath),
                               height: 560.0,
-                              imageUrl:
-                                  ApiConstants.imageUrl(item.backdropPath),
-                              fit: BoxFit.cover,
                             ),
                           ),
                           Align(
