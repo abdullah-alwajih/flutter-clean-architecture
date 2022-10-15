@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'core/services/services_locator.dart';
 import 'movies/presentation/views/movies.dart';
+
+part 'core/styles/app_themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,12 +20,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Movies App',
-      theme: buildThemeData,
+      theme: AppThemes.darkTheme,
+      locale: const Locale('en'),
+      supportedLocales: AppLocalizations.supportedLocales,
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
       home: const MoviesScreen(),
     );
   }
-
-  ThemeData get buildThemeData => ThemeData.dark().copyWith(
-    scaffoldBackgroundColor: Colors.grey.shade900,
-  );
 }

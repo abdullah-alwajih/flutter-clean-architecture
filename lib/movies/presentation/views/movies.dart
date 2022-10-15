@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../core/helpers/enums.dart';
 import '../../../../core/network/api_constants.dart';
@@ -31,7 +31,6 @@ class MoviesScreen extends StatelessWidget {
         ..add(GetTopRatedMoviesEvent()),
       child: Scaffold(
         body: SingleChildScrollView(
-          key: const Key('movieScrollView'),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -42,12 +41,8 @@ class MoviesScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Popular",
-                      style: GoogleFonts.poppins(
-                        fontSize: 19,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 0.15,
-                      ),
+                    AppLocalizations.of(context)!.popular,
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     InkWell(
                       onTap: () {
@@ -56,9 +51,9 @@ class MoviesScreen extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
-                          children: const [
-                            Text('See More'),
-                            Icon(
+                          children:  [
+                            Text(AppLocalizations.of(context)!.seeMore),
+                            const Icon(
                               Icons.arrow_forward_ios,
                               size: 16.0,
                             )
@@ -76,12 +71,8 @@ class MoviesScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Top Rated",
-                      style: GoogleFonts.poppins(
-                        fontSize: 19,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 0.15,
-                      ),
+                      AppLocalizations.of(context)!.topRated,
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     InkWell(
                       onTap: () {
@@ -90,9 +81,9 @@ class MoviesScreen extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
-                          children: const [
-                            Text('See More'),
-                            Icon(
+                          children:  [
+                            Text(AppLocalizations.of(context)!.seeMore),
+                            const Icon(
                               Icons.arrow_forward_ios,
                               size: 16.0,
                             )
