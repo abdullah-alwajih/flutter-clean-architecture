@@ -1,25 +1,14 @@
-import 'package:animate_do/animate_do.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../core/network/api_constants.dart';
-import '../../../core/utils/enums.dart';
-import '../controllers/movies_bloc.dart';
-import '../controllers/movies_state.dart';
-import '../screens/movie_detail_screen.dart';
+part of '../movies.dart';
 
 class NowPlayingComponent extends StatelessWidget {
   const NowPlayingComponent({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MoviesBloc, MoviesState>(
-      buildWhen: (previous, current) =>
-          previous.nowPlayingState != current.nowPlayingState,
-      builder: (context, state) {
-        switch (state.nowPlayingState) {
+    return GetX<MoviesController>(
+      init: Get.find<MoviesController>(),
+      builder: (controller) {
+        switch (controller.nowPlaying.value.nowPlayingState) {
           case RequestState.loading:
             return const SizedBox(
                 height: 400.0,
@@ -33,16 +22,13 @@ class NowPlayingComponent extends StatelessWidget {
                   viewportFraction: 1.0,
                   onPageChanged: (index, reason) {},
                 ),
-                items: state.nowPlayingMovies.map(
+                items: controller.nowPlaying.value.nowPlayingMovies.map(
                   (item) {
                     return GestureDetector(
                       key: const Key('openMovieMinimalDetail'),
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                MovieDetailScreen(id: item.id)),
-                      ),
+                      onTap: () => Navigator.pushNamed(
+                          context, AppRoutes.moviesDetails,
+                          arguments: item.id),
                       child: Stack(
                         children: [
                           ShaderMask(
@@ -63,11 +49,9 @@ class NowPlayingComponent extends StatelessWidget {
                               );
                             },
                             blendMode: BlendMode.dstIn,
-                            child: CachedNetworkImage(
+                            child: cachedNetworkImage(
+                              ApiConstants.imageUrl(item.backdropPath),
                               height: 560.0,
-                              imageUrl:
-                                  ApiConstants.imageUrl(item.backdropPath),
-                              fit: BoxFit.cover,
                             ),
                           ),
                           Align(
@@ -118,7 +102,9 @@ class NowPlayingComponent extends StatelessWidget {
           case RequestState.error:
             return SizedBox(
                 height: 400.0,
-                child: Center(child: Text(state.nowPlayingMessage)));
+                child: Center(
+                    child:
+                        Text(controller.nowPlaying.value.nowPlayingMessage)));
         }
       },
     );

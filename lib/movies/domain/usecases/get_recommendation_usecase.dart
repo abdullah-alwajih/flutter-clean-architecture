@@ -19,10 +19,10 @@ class GetRecommendationUseCase
 }
 
 class RecommendationParameters extends Equatable {
-  final int id;
+  final int movieID;
 
   const RecommendationParameters({
-    required this.id,
+    required this.movieID,
   });
 
   @override

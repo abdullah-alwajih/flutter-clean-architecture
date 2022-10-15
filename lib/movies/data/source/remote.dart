@@ -92,7 +92,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
       RecommendationParameters parameters) async {
     try {
       final response =
-          await Dio().get(ApiConstants.recommendationsPath(parameters.id));
+          await Dio().get(ApiConstants.recommendationsPath(parameters.movieID));
       if (response.statusCode == 200) {
         return List<RecommendationModel>.from(
           (response.data['results'] as List)
