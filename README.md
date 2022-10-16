@@ -1,16 +1,11 @@
-# flutter_clean_architecture
+<h1>What is clean architecture ?</h1>
+Separates your application code into layers and  these layers define the Separation of Concerns inside the codebase.
 
-A new Flutter project.
+Software design philosophy that separates the elements of a design into ring levels.
 
-## Getting Started
+<img width="4163" alt="Flutter Clean Architecture" src="https://user-images.githubusercontent.com/68817627/196030245-6fe5e600-8ca6-45e9-ac7b-c3b92cdc29f1.png">
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+<h1>App UI</h1>
+<img alt="App UI" src="https://user-images.githubusercontent.com/68817627/196030680-9791fc50-a731-4346-9712-dc5d085758b6.png">
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
