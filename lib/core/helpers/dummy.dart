@@ -1,7 +1,7 @@
-import '../../movies/domain/entities/genres.dart';
-import '../../movies/domain/entities/movie.dart';
-import '../../movies/domain/entities/movie_details.dart';
-import '../../movies/domain/entities/recommendation.dart';
+import '../../features/movies/domain/entities/genres.dart';
+import '../../features/movies/domain/entities/movie.dart';
+import '../../features/movies/domain/entities/movie_details.dart';
+import '../../features/movies/domain/entities/recommendation.dart';
 
 List<Movie> moviesList = [
   const Movie(
