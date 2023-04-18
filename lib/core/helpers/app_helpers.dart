@@ -1,4 +1,4 @@
-import '../../movies/domain/entities/genres.dart';
+import '../../features/movies/domain/entities/genres.dart';
 
 abstract class AppHelpers {
   static String showGenres(List<Genres> genres) {
