@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_architecture/core/routes/app_routes.dart';
 
 import '../../features/movies/presentation/views/movie_detail.dart';
 import '../../features/movies/presentation/views/movies.dart';
+import 'app_routes.dart';
 
 abstract class AppPages {
   static const String initial = AppRoutes.layout;
