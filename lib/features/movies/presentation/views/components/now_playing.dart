@@ -12,6 +12,8 @@ class NowPlayingComponent extends StatelessWidget {
         switch (state.nowPlayingState) {
           case RequestState.loading:
             return buildLoading(height: 400);
+          case RequestState.error:
+            return buildError(message: state.nowPlayingMessage);
           case RequestState.loaded:
             return FadeIn(
               duration: const Duration(milliseconds: 500),
@@ -99,10 +101,6 @@ class NowPlayingComponent extends StatelessWidget {
                 ).toList(),
               ),
             );
-          case RequestState.error:
-            return SizedBox(
-                height: 400.0,
-                child: Center(child: Text(state.nowPlayingMessage)));
         }
       },
     );

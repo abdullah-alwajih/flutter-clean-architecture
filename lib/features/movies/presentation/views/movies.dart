@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_clean_architecture/core/routes/app_routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../core/components/error.dart';
 import '../../../../core/components/loading.dart';
 import '../../../../core/helpers/enums.dart';
 import '../../../../core/network/api_constants.dart';

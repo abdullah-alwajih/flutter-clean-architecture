@@ -12,6 +12,8 @@ class PopularComponent extends StatelessWidget {
         switch (state.popularState) {
           case RequestState.loading:
             return buildLoading(height: 170);
+          case RequestState.error:
+            return buildError(message: state.nowPlayingMessage);
           case RequestState.loaded:
             return FadeIn(
               duration: const Duration(milliseconds: 500),
@@ -44,10 +46,6 @@ class PopularComponent extends StatelessWidget {
                 ),
               ),
             );
-          case RequestState.error:
-            return SizedBox(
-                height: 400.0,
-                child: Center(child: Text(state.nowPlayingMessage)));
         }
       },
     );
