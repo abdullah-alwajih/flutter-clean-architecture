@@ -12,14 +12,10 @@ import '../../../../core/utils/network_image.dart';
 import '../controllers/movies_bloc.dart';
 import '../controllers/movies_event.dart';
 import '../controllers/movies_state.dart';
-import 'movie_detail.dart';
 
 part 'components/now_playing.dart';
-
 part 'components/popular.dart';
-
 part 'components/section_tile.dart';
-
 part 'components/top_rated.dart';
 
 class MoviesView extends StatelessWidget {

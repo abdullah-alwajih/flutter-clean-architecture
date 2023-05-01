@@ -9,6 +9,7 @@ class ApiService {
   ApiService(this._dio);
 
   Future get(String path) async => await _dio.get(path);
+
   // Future get(String path) async => _getResponseData(await _dio.get(path));
 
   _getResponseData(Response response) {
