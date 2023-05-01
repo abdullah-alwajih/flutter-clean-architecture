@@ -6,7 +6,7 @@ import '../network/api_constants.dart';
 
 Widget cachedNetworkImage(imageUrl, {height, width, fit = BoxFit.cover}) {
   return CachedNetworkImage(
-    imageUrl: ApiConstants.imageUrl(imageUrl),
+    imageUrl: ApiUrls.imageUrl(imageUrl),
     width: width,
     height: height,
     fit: fit,
