@@ -12,6 +12,7 @@ class GetPopularMoviesUseCase extends BaseUseCase<List<Movie>, NoParameters> {
 
   @override
   Future<Either<Failure, List<Movie>>> call(NoParameters parameters) async {
+    // here can check permission
     return await baseMoviesRepository.getPopularMovies();
   }
 }

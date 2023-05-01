@@ -5,9 +5,9 @@ import '../../../../core/network/api_constants.dart';
 import '../../../../core/network/error_message.dart';
 import '../../domain/usecases/get_movie_details_usecase.dart';
 import '../../domain/usecases/get_recommendation_usecase.dart';
+import '../models/movie.dart';
 import '../models/movie_details.dart';
-import '../models/movie_model.dart';
-import '../models/recommendation_model.dart';
+import '../models/recommendation.dart';
 
 abstract class BaseMovieRemoteDataSource {
   Future<List<MovieModel>> getNowPlayingMovies();

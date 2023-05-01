@@ -19,7 +19,7 @@ dependencies:
   dio: ^5.1.1
 
   flutter_bloc: ^8.1.2
-  get_it: ^7.2.0
+  get_it: ^7.3.0
 
   animate_do: ^3.0.2
   shimmer: ^2.0.0
