@@ -39,7 +39,7 @@ class PopularComponent extends StatelessWidget {
                           borderRadius:
                               const BorderRadius.all(Radius.circular(8.0)),
                           child: cachedNetworkImage(
-                            ApiConstants.imageUrl(movie.backdropPath),
+                            ApiUrls.imageUrl(movie.backdropPath),
                             width: 120.0,
                           ),
                         ),

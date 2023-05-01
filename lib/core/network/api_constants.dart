@@ -1,4 +1,4 @@
-abstract class ApiConstants {
+abstract class ApiUrls {
   static const String apiKey = '?api_key=f6b41413ca9f340278fc896f747e31e8';
   static const String baseUrl = 'https://api.themoviedb.org/3/';
   static const String moviePath = '${baseUrl}movie/';

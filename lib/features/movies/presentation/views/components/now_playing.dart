@@ -52,7 +52,7 @@ class NowPlayingComponent extends StatelessWidget {
                             },
                             blendMode: BlendMode.dstIn,
                             child: cachedNetworkImage(
-                              ApiConstants.imageUrl(item.backdropPath),
+                              ApiUrls.imageUrl(item.backdropPath),
                               height: 560.0,
                             ),
                           ),

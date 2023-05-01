@@ -59,7 +59,7 @@ class MovieDetailScreen extends StatelessWidget {
                             },
                             blendMode: BlendMode.dstIn,
                             child: cachedNetworkImage(
-                              ApiConstants.imageUrl(
+                              ApiUrls.imageUrl(
                                   state.movieDetails!.backdropPath),
                               width: MediaQuery.of(context).size.width,
                             ),

@@ -1,7 +1,6 @@
-import 'package:dio/dio.dart';
-
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/network/api_constants.dart';
+import '../../../../core/network/api_service.dart';
 import '../../../../core/network/error_message.dart';
 import '../../domain/usecases/get_movie_details.dart';
 import '../../domain/usecases/get_recommendation.dart';
@@ -23,10 +22,14 @@ abstract class BaseMovieRemoteDataSource {
 }
 
 class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
+  final ApiService api;
+
+  const MovieRemoteDataSource(this.api);
+
   @override
   Future<List<MovieModel>> getNowPlayingMovies() async {
     try {
-      final response = await Dio().get(ApiConstants.nowPlayingPath);
+      final response = await api.get(ApiUrls.nowPlayingPath);
       if (response.statusCode == 200) {
         return MovieModel.fromMapList(response.data['results'] as List);
       } else {
@@ -40,7 +43,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
   @override
   Future<List<MovieModel>> getPopularMovies() async {
     try {
-      final response = await Dio().get(ApiConstants.popularPath);
+      final response = await api.get(ApiUrls.popularPath);
       if (response.statusCode == 200) {
         return MovieModel.fromMapList(response.data['results'] as List);
       } else {
@@ -54,7 +57,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
   @override
   Future<List<MovieModel>> getTopRatedMovies() async {
     try {
-      final response = await Dio().get(ApiConstants.topRatedPath);
+      final response = await api.get(ApiUrls.topRatedPath);
       if (response.statusCode == 200) {
         return MovieModel.fromMapList(response.data['results'] as List);
       } else {
@@ -70,7 +73,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
       MovieDetailsParameters parameters) async {
     try {
       final response =
-          await Dio().get(ApiConstants.movieDetailsPath(parameters.movieID));
+          await api.get(ApiUrls.movieDetailsPath(parameters.movieID));
       if (response.statusCode == 200) {
         return MovieDetailsModel.fromMap(response.data);
       } else {
@@ -86,7 +89,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
       RecommendationParameters parameters) async {
     try {
       final response =
-          await Dio().get(ApiConstants.recommendationsPath(parameters.id));
+          await api.get(ApiUrls.recommendationsPath(parameters.id));
       if (response.statusCode == 200) {
         return RecommendationModel.fromMapList(
             response.data['results'] as List);
