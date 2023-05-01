@@ -28,9 +28,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
     try {
       final response = await Dio().get(ApiConstants.nowPlayingPath);
       if (response.statusCode == 200) {
-        return List<MovieModel>.from(
-          (response.data['results'] as List).map((e) => MovieModel.fromMap(e)),
-        );
+        return MovieModel.fromMapList(response.data['results'] as List);
       } else {
         throw ServerException(ErrorMessageModel.fromMap(response.data));
       }
@@ -44,9 +42,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
     try {
       final response = await Dio().get(ApiConstants.popularPath);
       if (response.statusCode == 200) {
-        return List<MovieModel>.from(
-          (response.data['results'] as List).map((e) => MovieModel.fromMap(e)),
-        );
+        return MovieModel.fromMapList(response.data['results'] as List);
       } else {
         throw ServerException(ErrorMessageModel.fromMap(response.data));
       }
@@ -60,9 +56,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
     try {
       final response = await Dio().get(ApiConstants.topRatedPath);
       if (response.statusCode == 200) {
-        return List<MovieModel>.from(
-          (response.data['results'] as List).map((e) => MovieModel.fromMap(e)),
-        );
+        return MovieModel.fromMapList(response.data['results'] as List);
       } else {
         throw ServerException(ErrorMessageModel.fromMap(response.data));
       }
@@ -94,10 +88,8 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
       final response =
           await Dio().get(ApiConstants.recommendationsPath(parameters.id));
       if (response.statusCode == 200) {
-        return List<RecommendationModel>.from(
-          (response.data['results'] as List)
-              .map((e) => RecommendationModel.fromMap(e)),
-        );
+        return RecommendationModel.fromMapList(
+            response.data['results'] as List);
       } else {
         throw ServerException(ErrorMessageModel.fromMap(response.data));
       }

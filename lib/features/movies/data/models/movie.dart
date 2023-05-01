@@ -22,4 +22,7 @@ class MovieModel extends Movie {
       );
 
   Map<String, dynamic> toMap() => {};
+
+  static List<MovieModel> fromMapList(List elements) =>
+      elements.map((e) => MovieModel.fromMap(e)).toList();
 }
