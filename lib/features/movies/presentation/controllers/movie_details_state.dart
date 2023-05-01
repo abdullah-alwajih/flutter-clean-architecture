@@ -5,12 +5,12 @@ import '../../domain/entities/movie_details.dart';
 import '../../domain/entities/recommendation.dart';
 
 class MovieDetailsState extends Equatable {
-  final MovieDetails? movieDetails;
+  final MovieDetails movieDetails;
   final RequestState movieDetailsState;
   final String movieDetailsMessage;
 
   const MovieDetailsState({
-    this.movieDetails,
+    this.movieDetails = const MovieDetails(),
     this.movieDetailsState = RequestState.loading,
     this.movieDetailsMessage = '',
   });

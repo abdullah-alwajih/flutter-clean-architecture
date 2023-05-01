@@ -13,14 +13,14 @@ class MovieDetails extends Equatable {
   final List<Genres> genres;
 
   const MovieDetails({
-    required this.id,
-    required this.backdropPath,
-    required this.overview,
-    required this.releaseDate,
-    required this.runTime,
-    required this.title,
-    required this.voteAverage,
-    required this.genres,
+    this.id = 0,
+    this.backdropPath = '',
+    this.overview = '',
+    this.releaseDate = '',
+    this.runTime = 0,
+    this.title = '',
+    this.voteAverage = 0.0,
+    this.genres = const [],
   });
 
   @override
