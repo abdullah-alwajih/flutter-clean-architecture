@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import 'core/routes/app_pages.dart';
 import 'core/services/services_locator.dart';
-import 'features/movies/presentation/views/movies.dart';
 
 part 'core/styles/app_themes.dart';
 
@@ -25,7 +25,8 @@ class MyApp extends StatelessWidget {
       locale: const Locale('en'),
       supportedLocales: AppLocalizations.supportedLocales,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
-      home: const MoviesScreen(),
+      initialRoute: AppPages.initial,
+      routes: AppPages.pages,
     );
   }
 }

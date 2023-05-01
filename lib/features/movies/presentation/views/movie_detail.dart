@@ -12,13 +12,14 @@ import '../controllers/movie_details_bloc.dart';
 
 part 'components/recommendations.dart';
 
-class MovieDetailScreen extends StatelessWidget {
-  final int id;
-
-  const MovieDetailScreen({Key? key, required this.id}) : super(key: key);
+class MovieDetailView extends StatelessWidget {
+  const MovieDetailView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final int id =
+        int.tryParse('${ModalRoute.of(context)?.settings.arguments}') ?? 0;
+
     return BlocProvider(
       create: (context) => sl<MovieDetailsBloc>()
         ..add(GetMovieDetailsEvent(id: id))
