@@ -5,9 +5,9 @@ import '../../../../core/error/failure.dart';
 import '../../domain/entities/movie.dart';
 import '../../domain/entities/movie_details.dart';
 import '../../domain/entities/recommendation.dart';
-import '../../domain/repository/base_movies_repository.dart';
-import '../../domain/usecases/get_movie_details_usecase.dart';
-import '../../domain/usecases/get_recommendation_usecase.dart';
+import '../../domain/repository/base_movies.dart';
+import '../../domain/usecases/get_movie_details.dart';
+import '../../domain/usecases/get_recommendation.dart';
 import '../source/remote.dart';
 
 class MoviesRepository implements BaseMoviesRepository {

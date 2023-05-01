@@ -1,12 +1,12 @@
 import 'package:get_it/get_it.dart';
 
-import '../../features/movies/data/repository/movies_repository.dart';
+import '../../features/movies/data/repository/movies.dart';
 import '../../features/movies/data/source/remote.dart';
-import '../../features/movies/domain/repository/base_movies_repository.dart';
-import '../../features/movies/domain/usecases/get_movie_details_usecase.dart';
+import '../../features/movies/domain/repository/base_movies.dart';
+import '../../features/movies/domain/usecases/get_movie_details.dart';
 import '../../features/movies/domain/usecases/get_now_playing_movies.dart';
 import '../../features/movies/domain/usecases/get_popular_movies.dart';
-import '../../features/movies/domain/usecases/get_recommendation_usecase.dart';
+import '../../features/movies/domain/usecases/get_recommendation.dart';
 import '../../features/movies/domain/usecases/get_top_rated_movies.dart';
 import '../../features/movies/presentation/controllers/movie_details_bloc.dart';
 import '../../features/movies/presentation/controllers/movies_bloc.dart';
