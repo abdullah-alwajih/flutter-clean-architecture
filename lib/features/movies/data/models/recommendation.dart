@@ -11,4 +11,7 @@ class RecommendationModel extends Recommendation {
         id: map['id'] ?? 0,
         backdropPath: map['backdrop_path'] ?? '',
       );
+
+  static List<RecommendationModel> fromMapList(List elements) =>
+      elements.map((e) => RecommendationModel.fromMap(e)).toList();
 }

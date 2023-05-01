@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Movies App',
+      debugShowCheckedModeBanner: false,
       theme: AppThemes.darkTheme,
       locale: const Locale('en'),
       supportedLocales: AppLocalizations.supportedLocales,
