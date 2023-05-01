@@ -25,12 +25,9 @@ class NowPlayingComponent extends StatelessWidget {
                 items: state.nowPlayingMovies.map(
                   (item) {
                     return GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (BuildContext context) =>
-                                MovieDetailScreen(id: item.id)),
-                      ),
+                      onTap: () => Navigator.pushNamed(
+                          context, AppRoutes.movieDetails,
+                          arguments: item.id),
                       child: Stack(
                         children: [
                           ShaderMask(
