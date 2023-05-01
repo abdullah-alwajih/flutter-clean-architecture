@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import '../../../../core/error/failure.dart';
 import '../../../../core/usecase/base_use_case.dart';
 import '../entities/movie_details.dart';
-import '../repository/base_movies_repository.dart';
+import '../repository/base_movies.dart';
 
 class GetMovieDetailsUseCase
     extends BaseUseCase<MovieDetails, MovieDetailsParameters> {

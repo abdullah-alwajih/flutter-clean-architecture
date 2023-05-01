@@ -6,8 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/helpers/enums.dart';
 import '../../domain/entities/movie_details.dart';
 import '../../domain/entities/recommendation.dart';
-import '../../domain/usecases/get_movie_details_usecase.dart';
-import '../../domain/usecases/get_recommendation_usecase.dart';
+import '../../domain/usecases/get_movie_details.dart';
+import '../../domain/usecases/get_recommendation.dart';
 
 part 'movie_details_event.dart';
 part 'movie_details_state.dart';
