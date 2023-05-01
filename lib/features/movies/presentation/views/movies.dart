@@ -22,6 +22,8 @@ part 'components/movie_list.dart';
 
 part 'components/now_playing.dart';
 
+part 'components/now_playing_item.dart';
+
 part 'components/popular.dart';
 
 part 'components/section_tile.dart';
