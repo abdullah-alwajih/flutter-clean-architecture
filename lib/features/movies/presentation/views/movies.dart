@@ -17,6 +17,8 @@ part 'components/now_playing.dart';
 
 part 'components/popular.dart';
 
+part 'components/section_tile.dart';
+
 part 'components/top_rated.dart';
 
 class MoviesScreen extends StatelessWidget {
@@ -35,64 +37,20 @@ class MoviesScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const NowPlayingComponent(),
-              Container(
-                margin: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      AppLocalizations.of(context)!.popular,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        /// TODO : NAVIGATION TO POPULAR SCREEN
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Text(AppLocalizations.of(context)!.seeMore),
-                            const Icon(
-                              Icons.arrow_forward_ios,
-                              size: 16.0,
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              buildSectionTile(
+                context,
+                text: AppLocalizations.of(context)!.popular,
+                onTap: () {
+                  /// TODO : NAVIGATION TO POPULAR SCREEN
+                },
               ),
               const PopularComponent(),
-              Container(
-                margin: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      AppLocalizations.of(context)!.topRated,
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        /// TODO : NAVIGATION TO Top Rated Movies Screen
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            Text(AppLocalizations.of(context)!.seeMore),
-                            const Icon(
-                              Icons.arrow_forward_ios,
-                              size: 16.0,
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              buildSectionTile(
+                context,
+                text: AppLocalizations.of(context)!.topRated,
+                onTap: () {
+                  /// TODO : NAVIGATION TO POPULAR SCREEN
+                },
               ),
               const TopRatedComponent(),
               const SizedBox(height: 50.0),
