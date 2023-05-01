@@ -11,9 +11,7 @@ class NowPlayingComponent extends StatelessWidget {
       builder: (context, state) {
         switch (state.nowPlayingState) {
           case RequestState.loading:
-            return const SizedBox(
-                height: 400.0,
-                child: Center(child: CircularProgressIndicator()));
+            return buildLoading(height: 400);
           case RequestState.loaded:
             return FadeIn(
               duration: const Duration(milliseconds: 500),
