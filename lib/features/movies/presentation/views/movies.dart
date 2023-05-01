@@ -2,22 +2,30 @@ import 'package:animate_do/animate_do.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_clean_architecture/core/routes/app_routes.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../core/components/error.dart';
 import '../../../../core/components/loading.dart';
 import '../../../../core/helpers/enums.dart';
 import '../../../../core/network/api_constants.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/services/services_locator.dart';
 import '../../../../core/utils/network_image.dart';
+import '../../domain/entities/movie.dart';
 import '../controllers/movies_bloc.dart';
 import '../controllers/movies_event.dart';
 import '../controllers/movies_state.dart';
 
+part 'components/movie_item.dart';
+
+part 'components/movie_list.dart';
+
 part 'components/now_playing.dart';
+
 part 'components/popular.dart';
+
 part 'components/section_tile.dart';
+
 part 'components/top_rated.dart';
 
 class MoviesView extends StatelessWidget {

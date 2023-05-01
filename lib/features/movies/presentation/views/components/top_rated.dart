@@ -14,37 +14,7 @@ class TopRatedComponent extends StatelessWidget {
             case RequestState.error:
               return buildError(message: state.nowPlayingMessage);
             case RequestState.loaded:
-              return FadeIn(
-                duration: const Duration(milliseconds: 500),
-                child: SizedBox(
-                  height: 170.0,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    itemCount: state.topRatedMovies.length,
-                    itemBuilder: (context, index) {
-                      final movie = state.topRatedMovies[index];
-                      return Container(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: InkWell(
-                          onTap: () => Navigator.pushNamed(
-                              context, AppRoutes.movieDetails,
-                              arguments: movie.id),
-                          child: ClipRRect(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(8.0)),
-                            child: cachedNetworkImage(
-                              ApiUrls.imageUrl(movie.backdropPath),
-                              width: 120.0,
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              );
+              return buildMoviesList(state.topRatedMovies);
           }
         },
       );
