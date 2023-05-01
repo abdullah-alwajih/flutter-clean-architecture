@@ -1,7 +1,7 @@
 part of 'movie_details_bloc.dart';
 
 class MovieDetailsState extends Equatable {
-  final MovieDetails? movieDetails;
+  final MovieDetails movieDetails;
   final RequestState movieDetailsState;
   final String movieDetailsMessage;
   final List<Recommendation> recommendations;
@@ -9,7 +9,7 @@ class MovieDetailsState extends Equatable {
   final String recommendationsMessage;
 
   const MovieDetailsState({
-    this.movieDetails,
+    this.movieDetails = const MovieDetails(),
     this.movieDetailsState = RequestState.loading,
     this.movieDetailsMessage = '',
     this.recommendations = const [],
