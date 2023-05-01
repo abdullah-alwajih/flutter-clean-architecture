@@ -15,6 +15,7 @@ class GetMovieDetailsUseCase
   @override
   Future<Either<Failure, MovieDetails>> call(
       MovieDetailsParameters parameters) async {
+    // here can check permission
     return await baseMoviesRepository.getMovieDetails(parameters);
   }
 }
