@@ -1,18 +1,18 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/error/failure.dart';
-import '../../../../core/usecase/base_use_case.dart';
+import '../../../../core/base/domain/entities/failure.dart';
+import '../../../../core/base/domain/entities/no_parameter.dart';
+import '../../../../core/base/domain/usecase/base_use_case.dart';
 import '../entities/movie.dart';
 import '../repository/base_movies.dart';
 
-class GetNowPlayingMoviesUseCase
-    extends BaseUseCase<List<Movie>, NoParameters> {
+class GetNowPlayingMoviesUseCase extends BaseUseCase<List<Movie>, NoParameter> {
   final BaseMoviesRepository baseMoviesRepository;
 
   GetNowPlayingMoviesUseCase(this.baseMoviesRepository);
 
   @override
-  Future<Either<Failure, List<Movie>>> call(NoParameters parameters) async {
+  Future<Either<Failure, List<Movie>>> call(NoParameter parameters) async {
     // here can check permission
     return await baseMoviesRepository.getNowPlayingMovies();
   }

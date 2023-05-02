@@ -1,7 +1,7 @@
-import '../../../../core/error/exceptions.dart';
-import '../../../../core/network/api_constants.dart';
-import '../../../../core/network/api_service.dart';
-import '../../../../core/network/error_message.dart';
+import '../../../../core/base/data/models/error_message.dart';
+import '../../../../core/base/data/source/api_constants.dart';
+import '../../../../core/base/data/source/remote.dart';
+import '../../../../core/base/domain/entities/exceptions.dart';
 import '../../domain/usecases/get_movie_details.dart';
 import '../../domain/usecases/get_recommendation.dart';
 import '../models/movie.dart';
@@ -22,14 +22,14 @@ abstract class BaseMovieRemoteDataSource {
 }
 
 class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
-  final ApiService api;
+  final Remote remote;
 
-  const MovieRemoteDataSource(this.api);
+  const MovieRemoteDataSource(this.remote);
 
   @override
   Future<List<MovieModel>> getNowPlayingMovies() async {
     try {
-      final response = await api.get(ApiUrls.nowPlayingPath);
+      final response = await remote.get(ApiUrls.nowPlayingPath);
       if (response.statusCode == 200) {
         return MovieModel.fromMapList(response.data['results'] as List);
       } else {
@@ -43,7 +43,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
   @override
   Future<List<MovieModel>> getPopularMovies() async {
     try {
-      final response = await api.get(ApiUrls.popularPath);
+      final response = await remote.get(ApiUrls.popularPath);
       if (response.statusCode == 200) {
         return MovieModel.fromMapList(response.data['results'] as List);
       } else {
@@ -57,7 +57,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
   @override
   Future<List<MovieModel>> getTopRatedMovies() async {
     try {
-      final response = await api.get(ApiUrls.topRatedPath);
+      final response = await remote.get(ApiUrls.topRatedPath);
       if (response.statusCode == 200) {
         return MovieModel.fromMapList(response.data['results'] as List);
       } else {
@@ -73,7 +73,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
       MovieDetailsParameters parameters) async {
     try {
       final response =
-          await api.get(ApiUrls.movieDetailsPath(parameters.movieID));
+          await remote.get(ApiUrls.movieDetailsPath(parameters.movieID));
       if (response.statusCode == 200) {
         return MovieDetailsModel.fromMap(response.data);
       } else {
@@ -89,7 +89,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
       RecommendationParameters parameters) async {
     try {
       final response =
-          await api.get(ApiUrls.recommendationsPath(parameters.id));
+          await remote.get(ApiUrls.recommendationsPath(parameters.id));
       if (response.statusCode == 200) {
         return RecommendationModel.fromMapList(
             response.data['results'] as List);

@@ -1,6 +1,6 @@
 part of '../movies.dart';
 
-Widget buildMovieItem(BuildContext context, Movie movie) {
+Widget _buildMovieItem(BuildContext context, Movie movie) {
   return Container(
     padding: const EdgeInsets.only(right: 8.0),
     child: InkWell(

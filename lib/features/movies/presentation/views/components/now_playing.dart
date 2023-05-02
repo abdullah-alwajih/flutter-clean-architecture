@@ -23,7 +23,7 @@ class NowPlayingComponent extends StatelessWidget {
                   viewportFraction: 1.0,
                 ),
                 items: state.nowPlayingMovies
-                    .map((item) => buildNowPlayingItem(context, item))
+                    .map((item) => _buildNowPlayingItem(context, item))
                     .toList(),
               ),
             );

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/error/failure.dart';
+import '../../../../core/base/domain/entities/failure.dart';
 import '../entities/movie.dart';
 import '../entities/movie_details.dart';
 import '../entities/recommendation.dart';
