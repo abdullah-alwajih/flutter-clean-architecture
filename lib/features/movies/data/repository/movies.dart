@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/error/exceptions.dart';
-import '../../../../core/error/failure.dart';
+import '../../../../core/base/domain/entities/exceptions.dart';
+import '../../../../core/base/domain/entities/failure.dart';
 import '../../domain/entities/movie.dart';
 import '../../domain/entities/movie_details.dart';
 import '../../domain/entities/recommendation.dart';
@@ -21,7 +21,7 @@ class MoviesRepository implements BaseMoviesRepository {
       final result = await baseMovieRemoteDataSource.getNowPlayingMovies();
       return Right(result);
     } on ServerException catch (failure) {
-      return left(ServerFailure(failure.errorMessageModel.statusMessage));
+      return left(ServerFailure(failure.errorMessage.statusMessage));
     }
   }
 
@@ -31,7 +31,7 @@ class MoviesRepository implements BaseMoviesRepository {
       final result = await baseMovieRemoteDataSource.getPopularMovies();
       return Right(result);
     } on ServerException catch (failure) {
-      return left(ServerFailure(failure.errorMessageModel.statusMessage));
+      return left(ServerFailure(failure.errorMessage.statusMessage));
     }
   }
 
@@ -41,7 +41,7 @@ class MoviesRepository implements BaseMoviesRepository {
       final result = await baseMovieRemoteDataSource.getTopRatedMovies();
       return Right(result);
     } on ServerException catch (failure) {
-      return left(ServerFailure(failure.errorMessageModel.statusMessage));
+      return left(ServerFailure(failure.errorMessage.statusMessage));
     }
   }
 
@@ -53,7 +53,7 @@ class MoviesRepository implements BaseMoviesRepository {
           await baseMovieRemoteDataSource.getMovieDetails(parameters);
       return Right(result);
     } on ServerException catch (failure) {
-      return left(ServerFailure(failure.errorMessageModel.statusMessage));
+      return left(ServerFailure(failure.errorMessage.statusMessage));
     }
   }
 
@@ -65,7 +65,7 @@ class MoviesRepository implements BaseMoviesRepository {
           await baseMovieRemoteDataSource.getRecommendations(parameters);
       return Right(result);
     } on ServerException catch (failure) {
-      return left(ServerFailure(failure.errorMessageModel.statusMessage));
+      return left(ServerFailure(failure.errorMessage.statusMessage));
     }
   }
 }

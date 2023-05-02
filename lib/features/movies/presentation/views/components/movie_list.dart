@@ -11,7 +11,7 @@ Widget buildMoviesList(List<Movie> movies) {
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         itemCount: movies.length,
         itemBuilder: (context, index) =>
-            buildMovieItem(context, movies[index]),
+            _buildMovieItem(context, movies[index]),
       ),
     ),
   );

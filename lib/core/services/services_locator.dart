@@ -11,7 +11,7 @@ import '../../features/movies/domain/usecases/get_recommendation.dart';
 import '../../features/movies/domain/usecases/get_top_rated_movies.dart';
 import '../../features/movies/presentation/controllers/movie_details_bloc.dart';
 import '../../features/movies/presentation/controllers/movies_bloc.dart';
-import '../network/api_service.dart';
+import '../base/data/source/remote.dart';
 
 final sl = GetIt.instance;
 
@@ -33,7 +33,7 @@ class ServicesLocator {
         () => MoviesRepository(sl()));
 
     /// DATE SOURCE
-    sl.registerFactory(() => ApiService(Dio()));
+    sl.registerFactory(() => Remote(Dio()));
     sl.registerLazySingleton<BaseMovieRemoteDataSource>(
         () => MovieRemoteDataSource(sl()));
   }

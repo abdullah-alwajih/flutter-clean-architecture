@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../core/base/data/source/api_constants.dart';
 import '../../../../core/components/error.dart';
 import '../../../../core/components/loading.dart';
 import '../../../../core/helpers/enums.dart';
-import '../../../../core/network/api_constants.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/services/services_locator.dart';
 import '../../../../core/utils/network_image.dart';
@@ -17,17 +17,11 @@ import '../controllers/movies_event.dart';
 import '../controllers/movies_state.dart';
 
 part 'components/movie_item.dart';
-
 part 'components/movie_list.dart';
-
 part 'components/now_playing.dart';
-
 part 'components/now_playing_item.dart';
-
 part 'components/popular.dart';
-
 part 'components/section_tile.dart';
-
 part 'components/top_rated.dart';
 
 class MoviesView extends StatelessWidget {
@@ -46,7 +40,7 @@ class MoviesView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const NowPlayingComponent(),
-              buildSectionTile(
+              _buildSectionTile(
                 context,
                 text: AppLocalizations.of(context)!.popular,
                 onTap: () {
@@ -54,7 +48,7 @@ class MoviesView extends StatelessWidget {
                 },
               ),
               const PopularComponent(),
-              buildSectionTile(
+              _buildSectionTile(
                 context,
                 text: AppLocalizations.of(context)!.topRated,
                 onTap: () {

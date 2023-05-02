@@ -3,20 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../core/base/data/source/api_constants.dart';
 import '../../../../core/components/error.dart';
 import '../../../../core/components/loading.dart';
 import '../../../../core/helpers/app_helpers.dart';
 import '../../../../core/helpers/enums.dart';
-import '../../../../core/network/api_constants.dart';
 import '../../../../core/services/services_locator.dart';
 import '../../../../core/utils/network_image.dart';
 import '../../domain/entities/movie_details.dart';
+import '../../domain/entities/recommendation.dart';
 import '../controllers/movie_details_bloc.dart';
 
-part 'components/recommendations.dart';
-
+part 'components/recommendation_item.dart';
+part 'components/recommendations_grid.dart';
 part 'components/sliver_app_bar.dart';
-
 part 'components/sliver_to_box_adapter.dart';
 
 class MovieDetailView extends StatelessWidget {
@@ -63,7 +63,7 @@ class MovieDetailView extends StatelessWidget {
                     // Tab(text: 'More like this'.toUpperCase()),
                     SliverPadding(
                       padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 24.0),
-                      sliver: _showRecommendations(),
+                      sliver: _buildRecommendationsGrid(),
                     ),
                   ],
                 );

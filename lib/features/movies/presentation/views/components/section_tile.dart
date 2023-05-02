@@ -1,6 +1,6 @@
 part of '../movies.dart';
 
-Widget buildSectionTile(
+Widget _buildSectionTile(
   BuildContext context, {
   required String text,
   Function()? onTap,

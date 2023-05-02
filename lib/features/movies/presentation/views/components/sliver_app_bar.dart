@@ -1,6 +1,9 @@
 part of '../movie_detail.dart';
 
-SliverAppBar buildSliverAppBar(BuildContext context, MovieDetails movieDetails,) {
+SliverAppBar buildSliverAppBar(
+  BuildContext context,
+  MovieDetails movieDetails,
+) {
   return SliverAppBar(
     pinned: true,
     expandedHeight: 250.0,
@@ -20,14 +23,12 @@ SliverAppBar buildSliverAppBar(BuildContext context, MovieDetails movieDetails,)
               ],
               stops: [0.0, 0.5, 1.0, 1.0],
             ).createShader(
-              Rect.fromLTRB(
-                  0.0, 0.0, rect.width, rect.height),
+              Rect.fromLTRB(0.0, 0.0, rect.width, rect.height),
             );
           },
           blendMode: BlendMode.dstIn,
           child: cachedNetworkImage(
-            ApiUrls.imageUrl(
-                movieDetails.backdropPath),
+            ApiUrls.imageUrl(movieDetails.backdropPath),
             width: MediaQuery.of(context).size.width,
           ),
         ),
