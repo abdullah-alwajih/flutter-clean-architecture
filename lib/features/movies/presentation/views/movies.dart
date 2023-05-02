@@ -12,16 +12,22 @@ import '../../../../core/routes/app_routes.dart';
 import '../../../../core/services/services_locator.dart';
 import '../../../../core/utils/network_image.dart';
 import '../../domain/entities/movie.dart';
-import '../controllers/movies_bloc.dart';
-import '../controllers/movies_event.dart';
-import '../controllers/movies_state.dart';
+import '../managers/movies_bloc.dart';
+import '../managers/movies_event.dart';
+import '../managers/movies_state.dart';
 
 part 'components/movie_item.dart';
+
 part 'components/movie_list.dart';
+
 part 'components/now_playing.dart';
+
 part 'components/now_playing_item.dart';
+
 part 'components/popular.dart';
+
 part 'components/section_tile.dart';
+
 part 'components/top_rated.dart';
 
 class MoviesView extends StatelessWidget {

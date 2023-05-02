@@ -10,8 +10,8 @@ import '../../features/movies/domain/usecases/get_now_playing_movies.dart';
 import '../../features/movies/domain/usecases/get_popular_movies.dart';
 import '../../features/movies/domain/usecases/get_recommendation.dart';
 import '../../features/movies/domain/usecases/get_top_rated_movies.dart';
-import '../../features/movies/presentation/controllers/movie_details_bloc.dart';
-import '../../features/movies/presentation/controllers/movies_bloc.dart';
+import '../../features/movies/presentation/managers/movie_details_bloc.dart';
+import '../../features/movies/presentation/managers/movies_bloc.dart';
 import '../base/data/source/remote.dart';
 
 final sl = GetIt.instance;
