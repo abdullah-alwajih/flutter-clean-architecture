@@ -31,7 +31,9 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
     try {
       final response = await remote.get(ApiUrls.nowPlayingPath);
       if (response.statusCode == 200) {
-        return MovieModel.fromMapList(response.data['results'] as List);
+        List<MovieModel> movies =
+            MovieModel.fromMapList(response.data['results'] as List);
+        return movies;
       } else {
         throw ServerException(ErrorMessageModel.fromMap(response.data));
       }
