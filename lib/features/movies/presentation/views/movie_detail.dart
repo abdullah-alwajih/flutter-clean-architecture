@@ -12,7 +12,7 @@ import '../../../../core/services/services_locator.dart';
 import '../../../../core/utils/network_image.dart';
 import '../../domain/entities/movie_details.dart';
 import '../../domain/entities/recommendation.dart';
-import '../controllers/movie_details_bloc.dart';
+import '../managers/movie_details_bloc.dart';
 
 part 'components/recommendation_item.dart';
 part 'components/recommendations_grid.dart';
