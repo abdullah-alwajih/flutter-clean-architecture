@@ -5,21 +5,29 @@ import '../../../../core/base/domain/entities/failure.dart';
 import '../../domain/entities/movie.dart';
 import '../../domain/entities/movie_details.dart';
 import '../../domain/entities/recommendation.dart';
-import '../../domain/repository/base_movies.dart';
+import '../../domain/repositories/base_movies.dart';
 import '../../domain/usecases/get_movie_details.dart';
 import '../../domain/usecases/get_recommendation.dart';
-import '../source/remote.dart';
+import '../sources/local.dart';
+import '../sources/remote.dart';
 
 class MoviesRepository implements BaseMoviesRepository {
   final BaseMovieRemoteDataSource baseMovieRemoteDataSource;
+  final BaseMovieLocalDataSource baseMovieLocalDataSource;
 
-  MoviesRepository(this.baseMovieRemoteDataSource);
+  MoviesRepository(
+    this.baseMovieRemoteDataSource,
+    this.baseMovieLocalDataSource,
+  );
 
   @override
   Future<Either<Failure, List<Movie>>> getNowPlayingMovies() async {
     try {
-      final result = await baseMovieRemoteDataSource.getNowPlayingMovies();
-      return Right(result);
+      List<Movie> movies = [];
+      // List<Movie> movies = baseMovieLocalDataSource.getNowPlayingMovies();
+      // if(movies.isNotEmpty) return Right(movies);
+      movies = await baseMovieRemoteDataSource.getNowPlayingMovies();
+      return Right(movies);
     } on ServerException catch (failure) {
       return left(ServerFailure(failure.errorMessage.statusMessage));
     }

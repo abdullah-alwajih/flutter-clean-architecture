@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../features/movies/data/repository/movies.dart';
-import '../../features/movies/data/source/remote.dart';
-import '../../features/movies/domain/repository/base_movies.dart';
+import '../../features/movies/data/repositories/movies.dart';
+import '../../features/movies/data/sources/local.dart';
+import '../../features/movies/data/sources/remote.dart';
+import '../../features/movies/domain/repositories/base_movies.dart';
 import '../../features/movies/domain/usecases/get_movie_details.dart';
 import '../../features/movies/domain/usecases/get_now_playing_movies.dart';
 import '../../features/movies/domain/usecases/get_popular_movies.dart';
@@ -30,11 +31,13 @@ class ServicesLocator {
 
     /// Repository
     sl.registerLazySingleton<BaseMoviesRepository>(
-        () => MoviesRepository(sl()));
+        () => MoviesRepository(sl(), sl()));
 
     /// DATE SOURCE
     sl.registerFactory(() => Remote(Dio()));
     sl.registerLazySingleton<BaseMovieRemoteDataSource>(
         () => MovieRemoteDataSource(sl()));
+    sl.registerLazySingleton<BaseMovieLocalDataSource>(
+        () => MovieLocalDataSource());
   }
 }

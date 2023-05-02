@@ -4,7 +4,7 @@ import '../../../../core/base/domain/entities/failure.dart';
 import '../../../../core/base/domain/entities/no_parameter.dart';
 import '../../../../core/base/domain/usecase/base_use_case.dart';
 import '../entities/movie.dart';
-import '../repository/base_movies.dart';
+import '../repositories/base_movies.dart';
 
 class GetTopRatedMoviesUseCase extends BaseUseCase<List<Movie>, NoParameter> {
   final BaseMoviesRepository baseMoviesRepository;
