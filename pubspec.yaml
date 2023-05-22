@@ -24,6 +24,8 @@ dependencies:
   hive_flutter: ^1.1.0
 
   # Management
+  meta: ^1.8.0
+  bloc: ^8.1.1
   flutter_bloc: ^8.1.2
   get_it: ^7.3.0
 
