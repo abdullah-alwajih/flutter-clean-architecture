@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.alwajih.flutter_clean_architecture">
+    >
    <application
         android:label="flutter_clean_architecture"
         android:name="${applicationName}"

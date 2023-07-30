@@ -11,9 +11,7 @@ import '../../../core/utils/network_image.dart';
 import '../controllers/movies.dart';
 
 part 'components/now_playing.dart';
-
 part 'components/popular.dart';
-
 part 'components/top_rated.dart';
 
 class MoviesView extends GetView<MoviesController> {
@@ -45,10 +43,10 @@ class MoviesView extends GetView<MoviesController> {
                     onTap: () {
                       /// TODO : NAVIGATION TO POPULAR SCREEN
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Row(
-                        children: const [
+                        children: [
                           Text('See More'),
                           Icon(
                             Icons.arrow_forward_ios,
@@ -79,10 +77,10 @@ class MoviesView extends GetView<MoviesController> {
                     onTap: () {
                       /// TODO : NAVIGATION TO Top Rated Movies Screen
                     },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
                       child: Row(
-                        children: const [
+                        children: [
                           Text('See More'),
                           Icon(
                             Icons.arrow_forward_ios,
