@@ -13,28 +13,28 @@ abstract class Failure extends Equatable {
 class ServerFailure extends Failure {
   const ServerFailure(super.message);
 
-  factory ServerFailure.fromDioError(DioError error) {
+  factory ServerFailure.fromDioError(DioException error) {
     switch (error.type) {
-      case DioErrorType.connectionTimeout:
+      case DioExceptionType.connectionTimeout:
         return const ServerFailure('Connection Timeout');
-      case DioErrorType.sendTimeout:
+      case DioExceptionType.sendTimeout:
         return const ServerFailure('Send Timeout');
-      case DioErrorType.receiveTimeout:
+      case DioExceptionType.receiveTimeout:
         return const ServerFailure('Receive Timeout');
-      case DioErrorType.badCertificate:
+      case DioExceptionType.badCertificate:
         return const ServerFailure('Receive Timeout');
-      case DioErrorType.badResponse:
+      case DioExceptionType.badResponse:
         return ServerFailure.fromBadResponse(error);
-      case DioErrorType.cancel:
+      case DioExceptionType.cancel:
         return const ServerFailure('Cancel');
-      case DioErrorType.connectionError:
+      case DioExceptionType.connectionError:
         return const ServerFailure('Connection Error');
-      case DioErrorType.unknown:
+      case DioExceptionType.unknown:
         return const ServerFailure('Connection Error');
     }
   }
 
-  factory ServerFailure.fromBadResponse(DioError error) {
+  factory ServerFailure.fromBadResponse(DioException error) {
     return ServerFailure(error.message ?? error.response?.data['message']);
     // final int statusCode = error.response?.statusCode ?? 500;
     // if (statusCode >= 500) {

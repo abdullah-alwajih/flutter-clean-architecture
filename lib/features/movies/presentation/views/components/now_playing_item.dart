@@ -1,6 +1,6 @@
 part of '../movies.dart';
 
-Widget _buildNowPlayingItem(BuildContext context, Movie item) {
+Widget buildNowPlayingItem(BuildContext context, Movie item) {
   return GestureDetector(
     onTap: () => Navigator.pushNamed(context, AppRoutes.movieDetails,
         arguments: item.id),

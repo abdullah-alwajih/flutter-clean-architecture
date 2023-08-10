@@ -7,12 +7,13 @@ import '../../../../core/base/data/source/api_constants.dart';
 import '../../../../core/components/error.dart';
 import '../../../../core/components/loading.dart';
 import '../../../../core/helpers/app_helpers.dart';
-import '../../../../core/helpers/enums.dart';
 import '../../../../core/services/services_locator.dart';
 import '../../../../core/utils/network_image.dart';
 import '../../domain/entities/movie_details.dart';
 import '../../domain/entities/recommendation.dart';
-import '../managers/movie_details_bloc.dart';
+import '../../domain/usecases/get_movie_details.dart';
+import '../managers/movie_details/movie_details_cubit.dart';
+import '../managers/recommendation/recommendation_cubit.dart';
 
 part 'components/recommendation_item.dart';
 part 'components/recommendations_grid.dart';
@@ -28,18 +29,15 @@ class MovieDetailView extends StatelessWidget {
         int.tryParse('${ModalRoute.of(context)?.settings.arguments}') ?? 0;
 
     return BlocProvider(
-      create: (context) => sl<MovieDetailsBloc>()
-        ..add(GetMovieDetailsEvent(id: id))
-        ..add(GetMovieRecommendationEvent(id: id)),
+      create: (context) => sl<MovieDetailsCubit>()
+        ..getMovieDetails(MovieDetailsParameters(id: id)),
       child: Scaffold(
-        body: BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
+        body: BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
           builder: (context, state) {
-            switch (state.movieDetailsState) {
-              case RequestState.loading:
-                return buildLoading(height: 250);
-              case RequestState.error:
-                return buildError(message: state.movieDetailsMessage);
-              case RequestState.loaded:
+            switch (state) {
+              case MovieDetailsFailure():
+                return buildError(message: state.message);
+              case MovieDetailsSuccess():
                 return CustomScrollView(
                   slivers: [
                     buildSliverAppBar(context, state.movieDetails),
@@ -63,10 +61,12 @@ class MovieDetailView extends StatelessWidget {
                     // Tab(text: 'More like this'.toUpperCase()),
                     SliverPadding(
                       padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 24.0),
-                      sliver: _buildRecommendationsGrid(),
+                      sliver: _buildRecommendationsGrid(id),
                     ),
                   ],
                 );
+              default:
+                return buildLoading(height: 250);
             }
           },
         ),

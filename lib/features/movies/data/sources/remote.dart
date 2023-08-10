@@ -9,11 +9,11 @@ import '../models/movie_details.dart';
 import '../models/recommendation.dart';
 
 abstract class BaseMovieRemoteDataSource {
-  Future<List<MovieModel>> getNowPlayingMovies();
+  Future<List<MovieModel>> getNowPlayingMovies({int page = 1});
 
   Future<List<MovieModel>> getPopularMovies();
 
-  Future<List<MovieModel>> getTopRatedMovies();
+  Future<List<MovieModel>> getTopRatedMovies({int page = 1});
 
   Future<MovieDetailsModel> getMovieDetails(MovieDetailsParameters parameters);
 
@@ -27,9 +27,9 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
   const MovieRemoteDataSource(this.remote);
 
   @override
-  Future<List<MovieModel>> getNowPlayingMovies() async {
+  Future<List<MovieModel>> getNowPlayingMovies({int page = 1}) async {
     try {
-      final response = await remote.get(ApiUrls.nowPlayingPath);
+      final response = await remote.get('${ApiUrls.nowPlayingPath}?page=$page');
       if (response.statusCode == 200) {
         return MovieModel.fromMapList(response.data['results'] as List);
       } else {
@@ -55,9 +55,9 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
   }
 
   @override
-  Future<List<MovieModel>> getTopRatedMovies() async {
+  Future<List<MovieModel>> getTopRatedMovies({int page = 1}) async {
     try {
-      final response = await remote.get(ApiUrls.topRatedPath);
+      final response = await remote.get('${ApiUrls.topRatedPath}?page=$page');
       if (response.statusCode == 200) {
         return MovieModel.fromMapList(response.data['results'] as List);
       } else {
@@ -73,7 +73,7 @@ class MovieRemoteDataSource implements BaseMovieRemoteDataSource {
       MovieDetailsParameters parameters) async {
     try {
       final response =
-          await remote.get(ApiUrls.movieDetailsPath(parameters.movieID));
+          await remote.get(ApiUrls.movieDetailsPath(parameters.id));
       if (response.statusCode == 200) {
         return MovieDetailsModel.fromMap(response.data);
       } else {
