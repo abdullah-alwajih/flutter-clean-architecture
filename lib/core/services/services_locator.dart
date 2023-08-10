@@ -1,4 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_clean_architecture/features/movies/presentation/managers/movie_details/movie_details_cubit.dart';
+import 'package:flutter_clean_architecture/features/movies/presentation/managers/now_playing/now_playing_cubit.dart';
+import 'package:flutter_clean_architecture/features/movies/presentation/managers/popular/popular_cubit.dart';
+import 'package:flutter_clean_architecture/features/movies/presentation/managers/recommendation/recommendation_cubit.dart';
+import 'package:flutter_clean_architecture/features/movies/presentation/managers/top_rated/top_rated_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/movies/data/repositories/movies.dart';
@@ -10,17 +15,19 @@ import '../../features/movies/domain/usecases/get_now_playing_movies.dart';
 import '../../features/movies/domain/usecases/get_popular_movies.dart';
 import '../../features/movies/domain/usecases/get_recommendation.dart';
 import '../../features/movies/domain/usecases/get_top_rated_movies.dart';
-import '../../features/movies/presentation/managers/movie_details_bloc.dart';
-import '../../features/movies/presentation/managers/movies_bloc.dart';
 import '../base/data/source/remote.dart';
 
 final sl = GetIt.instance;
 
-class ServicesLocator {
-  void init() {
+abstract class ServicesLocator {
+  static void init() {
     /// Bloc
-    sl.registerFactory(() => MoviesBloc(sl(), sl(), sl()));
-    sl.registerFactory(() => MovieDetailsBloc(sl(), sl()));
+    sl.registerFactory(() => MovieDetailsCubit(sl()));
+    sl.registerFactory(() => RecommendationCubit(sl()));
+    sl.registerFactory(() => NowPlayingMoviesCubit(sl()));
+    sl.registerFactory(() => TopRatedMoviesCubit(sl()));
+    sl.registerFactory(() => PopularMoviesCubit(sl()));
+    // sl.registerFactory(() => MovieDetailsBloc(sl(), sl()));
 
     /// Use Cases
     sl.registerLazySingleton(() => GetNowPlayingMoviesUseCase(sl()));

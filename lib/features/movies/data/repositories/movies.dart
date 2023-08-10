@@ -21,7 +21,8 @@ class MoviesRepository implements BaseMoviesRepository {
   );
 
   @override
-  Future<Either<Failure, List<Movie>>> getNowPlayingMovies() async {
+  Future<Either<Failure, List<Movie>>> getNowPlayingMovies(
+      {int page = 1}) async {
     try {
       List<Movie> movies = [];
       // List<Movie> movies = baseMovieLocalDataSource.getNowPlayingMovies();
@@ -44,9 +45,10 @@ class MoviesRepository implements BaseMoviesRepository {
   }
 
   @override
-  Future<Either<Failure, List<Movie>>> getTopRatedMovies() async {
+  Future<Either<Failure, List<Movie>>> getTopRatedMovies({int page = 1}) async {
     try {
-      final result = await baseMovieRemoteDataSource.getTopRatedMovies();
+      final result =
+          await baseMovieRemoteDataSource.getTopRatedMovies(page: page);
       return Right(result);
     } on ServerException catch (failure) {
       return left(ServerFailure(failure.errorMessage.statusMessage));

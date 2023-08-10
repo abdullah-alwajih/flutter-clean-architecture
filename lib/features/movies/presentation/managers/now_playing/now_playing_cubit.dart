@@ -8,17 +8,17 @@ import '../../../domain/usecases/get_now_playing_movies.dart';
 part 'now_playing_state.dart';
 
 class NowPlayingMoviesCubit extends Cubit<NowPlayingMoviesState> {
+  final GetNowPlayingMoviesUseCase getNowPlayingMoviesUseCase;
+
   NowPlayingMoviesCubit(this.getNowPlayingMoviesUseCase)
       : super(NowPlayingMoviesInitial());
 
-  final GetNowPlayingMoviesUseCase getNowPlayingMoviesUseCase;
-
-  Future<void> getNowPlayingMoviesEvent() async {
+  Future<void> getNowPlayingMovies() async {
     emit(NowPlayingMoviesLoading());
     final result = await getNowPlayingMoviesUseCase(const NoParameter());
     result.fold(
-      (l) => NowPlayingMoviesFailure(l.message),
-      (r) => NowPlayingMoviesSuccess(r),
+      (l) => emit(NowPlayingMoviesFailure(l.message)),
+      (r) => emit(NowPlayingMoviesSuccess(r)),
     );
   }
 }

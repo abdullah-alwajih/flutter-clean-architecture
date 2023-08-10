@@ -8,7 +8,7 @@ part 'core/styles/app_themes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  ServicesLocator().init();
+  ServicesLocator.init();
   runApp(const MyApp());
 }
 
