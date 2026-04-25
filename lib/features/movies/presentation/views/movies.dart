@@ -2,7 +2,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_clean_architecture/core/l10n/app_localizations.dart';
 
 import '../../../../core/base/data/source/api_constants.dart';
 import '../../../../core/components/error.dart';
