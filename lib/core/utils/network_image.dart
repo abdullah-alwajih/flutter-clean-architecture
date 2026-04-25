@@ -2,11 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../base/data/source/api_constants.dart';
+import '../network/api_constants.dart';
 
 Widget cachedNetworkImage(imageUrl, {height, width, fit = BoxFit.cover}) {
   return CachedNetworkImage(
-    imageUrl: ApiUrls.imageUrl(imageUrl),
+    imageUrl: ApiConstants.imageUrl(imageUrl),
     width: width,
     height: height,
     fit: fit,

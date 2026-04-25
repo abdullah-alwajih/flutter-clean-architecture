@@ -1,1 +1,3 @@
-abstract class AppConstants {}
+abstract class AppConstants {
+
+}
